@@ -41,6 +41,7 @@ function Web(args){
 	
 	
 	this.initRouter();
+	this.initSocket();
 	
 	this.http.use('/',this.router); //Initialize all routes
 	this.http.server.listen('80'); //Listen on HTTP server
@@ -74,20 +75,18 @@ Web.prototype = Utils.Prototype([],{
 	},
 	
 	initSocket: function(){
-	
 		this.sock.on('connection', function(socket){
-			
+			console.log(socket.request.connection._peername.address);
+			console.log(socket.request.connection._peername.port);
 			socket.on('message',function(msg){
 			
 			});
 			socket.on('disconnect',function(){
-			
+				console.log("disconnected");
 			});
 			
 		});
 	},
 });
-
-
 
 module.exports = global.Web = Web;
