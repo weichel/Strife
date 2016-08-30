@@ -1,19 +1,18 @@
+'use strict';
 
 global.window = global.document = global;
+require('./utils');
 
-var express = require('express');
-var http = express();
 
-http.get('/', function(req,res){
-	
-	console.log("here");
-});
+require('./web');
 
-var server = http.listen('8000');
+
+var web = new Web();
 
 
 process.on('SIGINT', function () {
-	server.close();
+	//Cleanup
+	//server.close();
 	console.log();
 	console.log('Shutting down server..');
 	process.exit(0);
