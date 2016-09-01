@@ -76,8 +76,8 @@ Web.prototype = Utils.Prototype([],{
 	
 	initSocket: function(){
 		this.sock.on('connection', function(socket){
-			console.log(socket.request.connection._peername.address);
-			console.log(socket.request.connection._peername.port);
+			console.log("connected" + socket.request.connection._peername.address);
+			//console.log(socket.request.connection._peername.port);
 			socket.on('message',function(msg){
 			
 			});
